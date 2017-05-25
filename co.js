@@ -12,7 +12,7 @@
 
 // defining and creating animal/dog/cat with Animal class
 var animal = new Animal("rawr")
-var dog = new Animal("bark", "Snoopy", "black and white")
+var dog = new Animal("bark", "Snoopy")
 var cat = new Animal("meow","Garfield", "orange" )
 
 //constructor function that
@@ -24,4 +24,22 @@ function Animal(speak, name, color){
 
 //dog.speak returns "bark"
 //dog["speak"] returns "bark"
-//dog["speak"] = "arf", dog now returns speak as arf, 
+//dog["speak"] = "arf", dog now returns speak as arf, bark is forever gone
+
+//this
+//in a constructor, this refers to the current object being created
+//eg this.speak = Animal.speak and var whatever is whatever.speak
+
+//Prototypes, this is a method, its a function that is part of the object
+var animal = new Animal("rawr")
+var dog = new Animal("bark", "Snoopy")
+var cat = new Animal("meow","Garfield", "orange")
+
+function Animal(speak, name, color){
+  this.speak = speak
+  this.name = name
+  this.color = color
+  this.animalSays = function() {
+    console.log("This animal says " + this.speak)
+  }
+}
