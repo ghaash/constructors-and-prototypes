@@ -43,3 +43,19 @@ function Animal(speak, name, color){
     console.log("This animal says " + this.speak)
   }
 }
+
+// but we can refactor this with prototype, pulling this.animalSays out of the constructor
+var animal = new Animal("rawr")
+var dog = new Animal("bark", "Snoopy")
+var cat = new Animal("meow","Garfield", "orange")
+
+function Animal(speak, name, color){
+  this.speak = speak
+  this.name = name
+  this.color = color
+}
+
+//.prototype searches for the Animal class and "pulls the constructor in so we can use it!"
+Animal.prototype.animalSays = function() {
+  console.log("This animal says " + this.speak)
+}
