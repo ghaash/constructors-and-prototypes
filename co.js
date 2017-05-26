@@ -56,6 +56,28 @@ function Animal(speak, name, color){
 }
 
 //.prototype searches for the Animal class and "pulls the constructor in so we can use it!"
-Animal.prototype.animalSays = function() {
-  console.log("This animal says " + this.speak)
+Animal.prototype.animalSays = function(){
+  console.log("This animal says " + this.speak);
+}
+
+//ES6 gives a shortcut
+var animal = new Animal("rawr")
+var dog = new Animal("bark", "Snoopy")
+var cat = new Animal("meow","Garfield", "orange")
+
+Class Animal(speak, name, color){
+  this.speak = speak
+  this.name = name
+  this.color = color
+}
+
+class Animal {
+  constructor(speak, name, color) {
+    this.speak = speak
+    this.name = name
+    this.color = color
+  }
+
+Animal.prototype.animalSays = function(){
+  console.log("This animal says " + this.speak);
 }
