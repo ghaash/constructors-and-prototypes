@@ -43,11 +43,12 @@ function Animal(speak, name, color){
     console.log("This animal says " + this.speak)
   }
 }
+//dog.animalSays puts out "This animal says bark"
 
 // but we can refactor this with prototype, pulling this.animalSays out of the constructor
 var animal = new Animal("rawr")
-var dog = new Animal("bark", "Snoopy")
-var cat = new Animal("meow","Garfield", "orange")
+var dog = new Dog("bark", "Snoopy")
+var cat = new Cat("meow","Garfield", "orange")
 
 function Animal(speak, name, color){
   this.speak = speak
@@ -59,25 +60,49 @@ function Animal(speak, name, color){
 Animal.prototype.animalSays = function(){
   console.log("This animal says " + this.speak);
 }
+//dog.animalSays puts out "This animal says bark"
 
-//ES6 gives a shortcut
+//ES6 gives a shortcut...
 var animal = new Animal("rawr")
 var dog = new Animal("bark", "Snoopy")
 var cat = new Animal("meow","Garfield", "orange")
 
-Class Animal(speak, name, color){
-  this.speak = speak
-  this.name = name
-  this.color = color
-}
-
+//es6 removes function for class and adds constructor to identify it being a constructor
 class Animal {
   constructor(speak, name, color) {
     this.speak = speak
     this.name = name
     this.color = color
   }
-
-Animal.prototype.animalSays = function(){
+//all in the same class {}
+animalSays() {
   console.log("This animal says " + this.speak);
 }
+}
+
+//es5 inheritance
+
+//superclass
+function Animal(speak, name, color) {
+  this.speak = speak;
+  this.name = name;
+  this.color = color;
+}
+
+//superclass method
+Animal.prototype.move = function (speak, name, color) {
+  this.speak += speak;
+  this.name += name;
+  this.color += color;
+}
+
+//subclass dog
+function Dog() {
+  Animal.call(this);
+}
+
+// subclass extends superclass
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog;
+
+var dog = new Dog("bark", "Snoopy")
