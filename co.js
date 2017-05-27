@@ -12,8 +12,8 @@
 
 // defining and creating animal/dog/cat with Animal class
 var animal = new Animal("rawr")
-var dog = new Animal("bark", "Snoopy")
-var cat = new Animal("meow","Garfield", "orange" )
+var dog = new Dog("bark", "Snoopy")
+var cat = new Cat("meow","Garfield", "orange" )
 
 //constructor function that
 function Animal(speak, name, color){
@@ -106,3 +106,50 @@ Dog.prototype = Object.create(Animal.prototype);
 Dog.prototype.constructor = Dog;
 
 var dog = new Dog("bark", "Snoopy")
+
+//es5 again above did not work
+var Animal = function(speak, name, color) {
+  this.speak = speak;
+  this.name = name;
+  this.color = color;
+};
+//animal prototype
+Animal.prototype.saySomething = function(){
+  console.log(this.speak + " My name is " + this.name + " I am " + this.color );
+};
+
+//make new animal to test
+doggie = new Animal("bork", "Fido", "red")
+doggie.saySomething();
+
+//function for Dog
+function Dog(speak, name, color, owner) {
+  Animal.call(this, speak, name, color);
+  this.owner = owner;
+};
+
+//Dog prototype
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Animal;
+
+Dog.prototype.saySomething = function(){
+  console.log("Hello humane. I am pupper named " + this.name + " and I say " + this.speak);
+};
+
+poe = new Dog("arf", "Poe", "blue");
+poe.saySomething();
+
+function Cat(speak, name, color, owner) {
+  Animal.call(this, speak, name, color);
+  this.owner = owner;
+};
+
+Cat.prototype = Object.create(Animal.prototype);
+Cat.prototype.constructor = Animal;
+
+Cat.prototype.saySomething = function(){
+  console.log("Hello humane. I am kitteh named " + this.name + " and I say " + this.speak);
+};
+
+var cat = new Cat("meow","Garfield", "orange" )
+cat.saySomething();
