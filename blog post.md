@@ -13,3 +13,17 @@ explain a constructor and relate to Ruby
 explain a prototype and relate it to Ruby
 
 explain inheritance and relate it to Ruby
+
+to do tomorrow
+
+eat breakfast
+
+vacuum
+
+clean up room
+
+paper
+
+blog post
+
+start react tic tac toe fb guide
