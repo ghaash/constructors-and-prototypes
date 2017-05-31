@@ -1,29 +1,94 @@
-Blog Post
+# Javascript, Constructors, Prototypes and Inheritance..!
+So learning ruby was (still is!) great. It was a nice, simple, easy-to-understand language. It's creator Yukihiro "Matz" Matsumoto designed and created ruby with the philosophy of it being fun, productive and following the principle of least astonishment.
 
-Javascript, Constructors, Prototypes and Inheritance..?
+The principle of least atonishment is a design principle that reduces the amount of atonishment (confusion or being surprised) in its use. So that's exactly why ruby flows so beautifully and is easy to understand! That's we all <3 ruby!
 
-Learning Ruby was great. It was a nice, simple, clean language. Inheritance was as simple as make two class files and adding a < to one of them at the top.
+So the syntax that creates a class and object and allows for inheritance in ruby is simple and easy to understand.
 
-Then came javascript... yea nope. Not as easy as a <.
+For example:
 
-then explain javascript and whats its based off of
+```
+class Dog
+  def initialize(name, breed, color)
+    @name = name
+  end
 
-explain a constructor and relate to Ruby
+  def name
+    @name
+  end
+end
 
-explain a prototype and relate it to Ruby
+pupper = Dog.new("Poe")
 
-explain inheritance and relate it to Ruby
+pupper.name #prints out "Poe"
+```
 
-to do tomorrow
+And to share say to a Cat class, I'll that I would have to do is:
 
-eat breakfast
+```
+class Cat < Dog
+end
+```
 
-vacuum
+and I could call:
 
-clean up room
+```
+kitteh = Cat.new("Cate")
 
-paper
+kitteh.name #prints out "Cate"
+```
 
-blog post
+Then we started to learn javascript which is the defacto language of the internet after HTML and CSS which is not as easy as ruby.. in matter of fact it can be extremely tempermental. However, it makes the internet incredible and data flows so quickly now and it's worth dealing with its tempermentalness.
 
-start react tic tac toe fb guide
+Javascript (pre-ES6, ES6 does allow for class!) does not handle object-oriented programming like ruby does - its not so pretty or nice. It uses prototype, it is a style of object-oriented programming where classes (no class Dog!) are not present, and behavior reuse (or inheritance in class-based languages) is performed by cloning existing objects that serve as prototypes.
+
+So to do the same code above in Javascript it would look like this:
+
+```
+//es5 inheritance, below is the constructor
+function Animal(sound) {
+  this.sound = sound
+}
+
+Animal.prototype.speak = function() {
+  return this.sound
+}
+
+//test Animal
+var seal = new Animal("hork!")
+seal.sound // "hork!"
+seal.speak() // "hork!"
+
+// Child classes
+function Dog(sound, name) {
+  Animal.call(this, sound)
+  this.name = name
+}
+
+Dog.prototype = Object.create(Animal.prototype)
+Dog.prototype.constructor = Dog
+
+var pupper = new Dog("bork", "Poe Dameron")
+pupper.sound // "bork"
+pupper.speak() // "bork"
+pupper.name // "Poe Dameron"
+
+
+function Cat(sound, name, color) {
+  Animal.call(this, sound)
+  this.name = name
+  this.color = color
+}
+
+Cat.prototype = Object.create(Animal.prototype)
+Cat.prototype.constructor = Cat
+
+//test Cat
+var kitteh = new Cat("meowth", "Mr. Lucky", "orange")
+kitteh.sound // "meowth"
+kitteh.speak() // "meowth"
+kitteh.name // "Garfield"
+kitteh.color // "Orange"
+```
+
+And that's how you have classes and inheritance in Javascript ES5!

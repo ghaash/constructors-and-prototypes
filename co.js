@@ -153,3 +153,6 @@ Cat.prototype.saySomething = function(){
 
 var cat = new Cat("meow","Garfield", "orange" )
 cat.saySomething();
+// read eloquent js, you don't know js, and have inheritance thorugh functions
+
+//es5 again...
