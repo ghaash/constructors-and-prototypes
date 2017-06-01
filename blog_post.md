@@ -38,9 +38,9 @@ kitteh = Cat.new("Cate")
 kitteh.name #prints out "Cate"
 ```
 
-Then we started to learn javascript which is the defacto language of the internet after HTML and CSS which is not as easy as ruby.. in matter of fact it can be extremely tempermental. However, it makes the internet incredible and data flows so quickly now and it's worth dealing with its tempermentalness.
+Then we started to learn javascript which is the defacto language of the internet along HTML and CSS. Javascript is more complex than ruby as it is not a true OOP (object oriented programming) language. It is a scripting
 
-Javascript (pre-ES6, ES6 does allow for class!) does not handle object-oriented programming like ruby does - its not so pretty or nice. It uses prototype, it is a style of object-oriented programming where classes (no class Dog!) are not present, and behavior reuse (or inheritance in class-based languages) is performed by cloning existing objects that serve as prototypes.
+Javascript (pre-ES6, ES6 does allow for class!) does not handle object-oriented programming like ruby does - it does not do classes at all, technically. Javascript uses prototype, it is a style of object-oriented programming where classes (no class Dog!) are not present, and behavior reuse (or inheritance in class-based languages) is performed by cloning existing objects that serve as prototypes.
 
 So to do the same code above in Javascript it would look like this:
 
